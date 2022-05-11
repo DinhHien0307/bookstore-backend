@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('price');
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
+            $table->string('images');
         });
     }
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+    protected $with = ['category', 'author', 'publisher'];
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
