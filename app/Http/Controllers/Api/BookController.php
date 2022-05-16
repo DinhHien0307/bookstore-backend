@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Resources\Book as BookResource;
 
 class BookController extends Controller
 {
@@ -18,7 +18,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        return response()->json($books, Response::HTTP_OK);
+        return BookResource::collection($books);
     }
 
     /**
