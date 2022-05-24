@@ -23,7 +23,7 @@ class BookFactory extends Factory
             'author_id' => Author::factory(),
             'category_id' => Category::factory(),
             'publisher_id' => Publisher::factory(),
-            'title' => $this->faker->title,
+            'title' => $this->faker->sentence,
             'excerpt' => $this->faker->sentence,
             'slug' => $this->faker->slug,
             'body' => $this->faker->paragraph,
