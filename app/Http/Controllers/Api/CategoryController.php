@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Book as BookResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -39,7 +40,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $books = $category->books;
+        return BookResource::collection($books);
     }
 
     /**
