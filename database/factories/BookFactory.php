@@ -23,12 +23,16 @@ class BookFactory extends Factory
             'author_id' => Author::factory(),
             'category_id' => Category::factory(),
             'publisher_id' => Publisher::factory(),
+            'slug' => $this->faker->slug,
             'title' => $this->faker->sentence,
             'excerpt' => $this->faker->sentence,
-            'slug' => $this->faker->slug,
             'body' => $this->faker->paragraph,
-            'price' => $this->faker->randomDigit(),
-            'images' => $this->faker->imageUrl(100,150)
+            'price' => $this->faker->randomNumber(),
+            'published_at' => $this->faker->dateTime(),
+            'images' => '/images/books/150x226/book' . $this->faker->randomDigit(),
+            'isOnSale' => $this->faker->boolean(),
+            'isFeatured' => $this->faker->boolean(),
+            'view' => $this->faker->randomNumber(),
         ];
     }
 }

@@ -19,6 +19,8 @@ class AuthorFactory extends Factory
         return [
             'name' => $this->faker->name,
             'slug' => $this->faker->slug,
+            'isFavorite' => $this->faker->boolean(),
+            'image' => '/images/authors/140x140/author' . $this->faker->randomDigit()
         ];
     }
 }

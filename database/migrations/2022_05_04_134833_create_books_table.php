@@ -26,6 +26,9 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('published_at')->nullable();
             $table->string('images');
+            $table->boolean('isOnSale')->default(false);
+            $table->boolean('isFeatured')->default(false);
+            $table->bigInteger('view');
         });
     }
 

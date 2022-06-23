@@ -17,7 +17,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::latest()->filter(request(['search']))->get();
         return BookResource::collection($books);
     }
 
