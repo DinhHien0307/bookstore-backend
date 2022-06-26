@@ -5,11 +5,20 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
+use App\Repositories\BookRepository;
+use App\Repositories\Contracts\BookRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Book as BookResource;
 
 class BookController extends Controller
 {
+    private BookRepositoryInterface $repository;
+
+    public function __construct(BookRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +26,13 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::latest()->filter(request(['search']))->get();
+        $books = null;
+        if (request('view')) {
+            $books = $this->repository->getByView(request('view'));
+        } else {
+            $books = Book::latest()->filter(request(['search']))->get();
+        }
+
         return BookResource::collection($books);
     }
 
